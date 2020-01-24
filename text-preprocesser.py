@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import messagebox as msg
-
+from tkinter import filedialog
+import nltk import stopwords 
+import string
 class Text_Preprocesser():
     def __init__(self,master):
         self.master = master
@@ -11,8 +13,8 @@ class Text_Preprocesser():
         self.menu = Menu(self.master)
         
         self.file_menu = Menu(self.menu,tearoff = 0)
-        self.file_menu.add_command(label = "Insert a file" , accelerator = 'Alt+O')
-        self.file_menu.add_command(label = "Save a file", accelerator = 'Ctrl + S')
+        self.file_menu.add_command(label = "Insert a file" ,command = self.addf)
+        self.file_menu.add_command(label = "Save a file",state="disable")
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -29,14 +31,24 @@ class Text_Preprocesser():
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: self.aboutmenu())
 
-        self.remsstop = Button(self.master, text = "REMOVE STOP WORDS")
+        self.remsstop = Button(self.master, text = "REMOVE STOP WORDS",state="disable")
         self.remsstop.pack()
 
-        self.rempun  = Button(self.master, text = "REMOVE PUNCTUATION")
+        self.rempun  = Button(self.master, text = "REMOVE PUNCTUATION",state="disable")
         self.rempun.pack()
-
-
     
+    def addf(self):
+         self.filename = filedialog.askopenfilename(initialdir="/",title="Select txt file",
+                                                   filetypes=(("txt files","*.txt"),("all files","*.*")))
+         if ".txt" in self.filename:
+             msg.showinfo("SUCCESS","THE TXT FILE ADDED SUCCESSFULLY")
+             self.rempun.configure(state="active")
+             self.remsstop.configure(state  = "active")
+             self.file_menu.entryconfig("Insert a file",state = "disable")
+         else:
+             msg.showerror("ERROR" ,"NO TXT FILE ADDED ") 
+
+
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
