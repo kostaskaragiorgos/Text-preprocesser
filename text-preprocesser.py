@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import filedialog
-import nltk import stopwords 
+from nltk.corpus import stopwords 
 import string
+
+
 class Text_Preprocesser():
     def __init__(self,master):
         self.master = master
