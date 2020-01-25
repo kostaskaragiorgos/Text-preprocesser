@@ -42,21 +42,7 @@ class Text_Preprocesser():
         self.rempun.pack()
     
     def rempun(self):
-        file1 = open(str(self.filename),'r') 
-        line = file1.read()
-        words = line.split() 
-        self.filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-        self.no_specials_string = re.sub('[!#?,.:";]', self.filenamesave)
-        appendFile = open(str(self.filenamesave)+".txt",'a') 
-        appendFile.write(" "+self.no_specials_string) 
-        appendFile.close()
-        """
-        for r in words: 
-            if  not self.no_specials_string = re.sub('[!#?,.:";]', 'r'): 
-                appendFile = open(str(self.filenamesave)+".txt",'a') 
-                appendFile.write(" "+r) 
-                appendFile.close() 
-"""
+        pass
     
     def addf(self):
          self.filename = filedialog.askopenfilename(initialdir="/",title="Select txt file",
