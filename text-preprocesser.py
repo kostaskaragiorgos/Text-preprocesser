@@ -65,11 +65,15 @@ class Text_Preprocesser():
         line = file1.read()
         words = line.split() 
         self.filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-        for r in words: 
-            if not r in self.stop_words: 
-                appendFile = open(str(self.filenamesave)+".txt",'a') 
-                appendFile.write(" "+r) 
-                appendFile.close() 
+        if "*.txt" in self.filenamesave:
+            for r in words: 
+                if not r in self.stop_words: 
+                    appendFile = open(str(self.filenamesave)+".txt",'a') 
+                    appendFile.write(" "+r) 
+                    appendFile.close()
+        else:
+            msg.showerror("Abort","Abort")
+            
 
     
     def helpmenu(self):
