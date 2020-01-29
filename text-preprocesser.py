@@ -45,7 +45,6 @@ class Text_Preprocesser():
         remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
         file1 = open(str(self.filename),'r') 
         line = file1.read()
-        #words = line.split() 
         self.filenamesave2 =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
         if ".txt" in self.filenamesave2:
             for r in line:
@@ -93,7 +92,7 @@ class Text_Preprocesser():
         pass
     
     def aboutmenu(self):
-        pass
+        msg.showinfo("About", "Version 1.0")
 
         
 
