@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import filedialog
 from nltk.corpus import stopwords 
-import re
+import string
 
 class Text_Preprocesser():
     def __init__(self,master):
@@ -42,7 +42,20 @@ class Text_Preprocesser():
         self.rempun.pack()
     
     def rempun(self):
-        pass
+        remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
+        file1 = open(str(self.filename),'r') 
+        line = file1.read()
+        #words = line.split() 
+        self.filenamesave2 =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
+        if ".txt" in self.filenamesave2:
+            for r in line:
+                if r not in string.punctuation:
+                    appendFile = open(str(self.filenamesave2)+".txt",'a') 
+                    appendFile.write(" "+r) 
+                    appendFile.close()
+        else:
+            msg.showerror("Abort","Abort")
+   
     
     def addf(self):
          self.filename = filedialog.askopenfilename(initialdir="/",title="Select txt file",
@@ -65,7 +78,7 @@ class Text_Preprocesser():
         line = file1.read()
         words = line.split() 
         self.filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-        if "*.txt" in self.filenamesave:
+        if ".txt" in self.filenamesave:
             for r in words: 
                 if not r in self.stop_words: 
                     appendFile = open(str(self.filenamesave)+".txt",'a') 
