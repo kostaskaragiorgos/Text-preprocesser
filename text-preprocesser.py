@@ -14,7 +14,7 @@ class Text_Preprocesser():
         self.master.resizable(False,False)
 
         
-        
+        # menu
         self.menu = Menu(self.master)
         self.stop_words = set(stopwords.words('english'))
         
@@ -37,6 +37,7 @@ class Text_Preprocesser():
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: self.aboutmenu())
 
+        #buttons
         self.remsstop = Button(self.master, text = "REMOVE STOP WORDS",command = self.stopw ,state="disable")
         self.remsstop.pack()
 
@@ -47,6 +48,7 @@ class Text_Preprocesser():
         self.wordcanddist.pack()
     
     def wcd(self):
+        """ prints the number of words and the words distribution"""
         file  = open(str(self.filename),'r')
         line =file.read()
         token = word_tokenize(line)
@@ -54,6 +56,8 @@ class Text_Preprocesser():
         msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()) )
     
     def rempun(self):
+        """ removes every kind of punctuation """
+
         remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
         file1 = open(str(self.filename),'r') 
         line = file1.read()
@@ -64,15 +68,17 @@ class Text_Preprocesser():
                     appendFile = open(str(self.filenamesave2)+".txt",'a') 
                     appendFile.write(" "+r) 
                     appendFile.close()
+            msg.showinfo("SUCCESS","PUNCTUATION REMOVED SUCCESSFULLY")
         else:
             msg.showerror("Abort","Abort")
    
     
     def addf(self):
+        """ inserts a .txt file and activates the buttons"""
          self.filename = filedialog.askopenfilename(initialdir="/",title="Select txt file",
                                                    filetypes=(("txt files","*.txt"),("all files","*.*")))
          if ".txt" in self.filename:
-             msg.showinfo("SUCCESS","THE TXT FILE ADDED SUCCESSFULLY")
+             msg.showinfo("SUCCESS","TXT FILE ADDED SUCCESSFULLY")
              self.rempun.configure(state="active")
              self.wordcanddist.configure(state = "active")
              self.remsstop.configure(state  = "active")
@@ -86,6 +92,8 @@ class Text_Preprocesser():
             self.master.destroy()
 
     def stopw(self):
+        """ removes stop words"""
+        
         file1 = open(str(self.filename),'r') 
         line = file1.read()
         words = line.split() 
@@ -96,7 +104,7 @@ class Text_Preprocesser():
                     appendFile = open(str(self.filenamesave)+".txt",'a') 
                     appendFile.write(" "+r) 
                     appendFile.close()
-            msg.showinfo("SUCCESS","THE STOP WORDS REMOVED SUCCESSFULLY")
+            msg.showinfo("SUCCESS","STOP WORDS REMOVED SUCCESSFULLY")
         else:
             msg.showerror("Abort","Abort")
             
