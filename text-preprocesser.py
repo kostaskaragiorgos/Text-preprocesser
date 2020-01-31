@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import filedialog
 from nltk.corpus import stopwords 
+from nltk import word_tokenize
+import nltk
 import string
 
 class Text_Preprocesser():
@@ -40,6 +42,16 @@ class Text_Preprocesser():
 
         self.rempun  = Button(self.master, text = "REMOVE PUNCTUATION",command = self.rempun , state="disable")
         self.rempun.pack()
+
+        self.wordcanddist = Button(self.master, text = "WORD COUNTER AND DISTRIBUTION",command = self.wcd,state = "disable")
+        self.wordcanddist.pack()
+    
+    def wcd(self):
+        file  = open(str(self.filename),'r')
+        line =file.read()
+        token = word_tokenize(line)
+        fdist = nltk.FreqDist(token)
+        msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()) )
     
     def rempun(self):
         remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
@@ -62,6 +74,7 @@ class Text_Preprocesser():
          if ".txt" in self.filename:
              msg.showinfo("SUCCESS","THE TXT FILE ADDED SUCCESSFULLY")
              self.rempun.configure(state="active")
+             self.wordcanddist.configure(state = "active")
              self.remsstop.configure(state  = "active")
              self.file_menu.entryconfig("Insert a file",state = "disable")
          else:
