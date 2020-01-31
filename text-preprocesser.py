@@ -96,6 +96,7 @@ class Text_Preprocesser():
                     appendFile = open(str(self.filenamesave)+".txt",'a') 
                     appendFile.write(" "+r) 
                     appendFile.close()
+            msg.showinfo("SUCCESS","THE STOP WORDS REMOVED SUCCESSFULLY")
         else:
             msg.showerror("Abort","Abort")
             
