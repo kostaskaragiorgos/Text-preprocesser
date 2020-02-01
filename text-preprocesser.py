@@ -48,13 +48,14 @@ class Text_Preprocesser():
         self.wordcanddist.pack()
     
     def closef(self):
+        """ CLOSES FILE """
         self.filename = ""
         self.rempun.configure(state="disable")
         self.wordcanddist.configure(state = "disable")
         self.remsstop.configure(state  = "disable")
         self.file_menu.entryconfig("Close a file",state = "disable")
         self.file_menu.entryconfig("Insert a file",state = "active")
-        
+        msg.showinfo("CLOSE", "FILE SUCCESSFULLY CLOSED")
     
     def wcd(self):
         """ prints the number of words and the words distribution"""
