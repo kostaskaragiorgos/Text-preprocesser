@@ -12,7 +12,7 @@ class Text_Preprocesser():
         self.master.title("Text Preprocesser")
         self.master.geometry("250x150")
         self.master.resizable(False,False)
-
+        self.filename = ""
         
         # menu
         self.menu = Menu(self.master)
@@ -20,7 +20,7 @@ class Text_Preprocesser():
         
         self.file_menu = Menu(self.menu,tearoff = 0)
         self.file_menu.add_command(label = "Insert a file" ,command = self.addf)
-        self.file_menu.add_command(label = "Close a file",state="disable")
+        self.file_menu.add_command(label = "Close a file",state="disable",command = self.closef)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -47,6 +47,15 @@ class Text_Preprocesser():
         self.wordcanddist = Button(self.master, text = "WORD COUNTER AND DISTRIBUTION",command = self.wcd,state = "disable")
         self.wordcanddist.pack()
     
+    def closef(self):
+        self.filename = ""
+        self.rempun.configure(state="disable")
+        self.wordcanddist.configure(state = "disable")
+        self.remsstop.configure(state  = "disable")
+        self.file_menu.entryconfig("Close a file",state = "disable")
+        self.file_menu.entryconfig("Insert a file",state = "active")
+        
+    
     def wcd(self):
         """ prints the number of words and the words distribution"""
         file  = open(str(self.filename),'r')
@@ -59,14 +68,14 @@ class Text_Preprocesser():
         """ removes every kind of punctuation """
 
         remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
-        file1 = open(str(self.filename),'r') 
-        line = file1.read()
+        file = open(str(self.filename),'r') 
+        line = file.read()
         self.filenamesave2 =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
         if ".txt" in self.filenamesave2:
             for r in line:
                 if r not in string.punctuation:
                     appendFile = open(str(self.filenamesave2)+".txt",'a') 
-                    appendFile.write(" "+r) 
+                    appendFile.write(r) 
                     appendFile.close()
             msg.showinfo("SUCCESS","PUNCTUATION REMOVED SUCCESSFULLY")
         else:
@@ -83,6 +92,7 @@ class Text_Preprocesser():
             self.wordcanddist.configure(state = "active")
             self.remsstop.configure(state  = "active")
             self.file_menu.entryconfig("Insert a file",state = "disable")
+            self.file_menu.entryconfig("Close a file",state = "active")
         else:
             msg.showerror("ERROR" ,"NO TXT FILE ADDED ") 
 
@@ -102,7 +112,7 @@ class Text_Preprocesser():
             for r in words: 
                 if not r in self.stop_words: 
                     appendFile = open(str(self.filenamesave)+".txt",'a') 
-                    appendFile.write(" "+r) 
+                    appendFile.write(r) 
                     appendFile.close()
             msg.showinfo("SUCCESS","STOP WORDS REMOVED SUCCESSFULLY")
         else:
