@@ -20,7 +20,7 @@ class Text_Preprocesser():
         
         self.file_menu = Menu(self.menu,tearoff = 0)
         self.file_menu.add_command(label = "Insert a file" ,command = self.addf)
-        self.file_menu.add_command(label = "Save a file",state="disable")
+        self.file_menu.add_command(label = "Close a file",state="disable")
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -75,16 +75,16 @@ class Text_Preprocesser():
     
     def addf(self):
         """ inserts a .txt file and activates the buttons"""
-         self.filename = filedialog.askopenfilename(initialdir="/",title="Select txt file",
+        self.filename = filedialog.askopenfilename(initialdir="/",title="Select txt file",
                                                    filetypes=(("txt files","*.txt"),("all files","*.*")))
-         if ".txt" in self.filename:
-             msg.showinfo("SUCCESS","TXT FILE ADDED SUCCESSFULLY")
-             self.rempun.configure(state="active")
-             self.wordcanddist.configure(state = "active")
-             self.remsstop.configure(state  = "active")
-             self.file_menu.entryconfig("Insert a file",state = "disable")
-         else:
-             msg.showerror("ERROR" ,"NO TXT FILE ADDED ") 
+        if ".txt" in self.filename:
+            msg.showinfo("SUCCESS","TXT FILE ADDED SUCCESSFULLY")
+            self.rempun.configure(state="active")
+            self.wordcanddist.configure(state = "active")
+            self.remsstop.configure(state  = "active")
+            self.file_menu.entryconfig("Insert a file",state = "disable")
+        else:
+            msg.showerror("ERROR" ,"NO TXT FILE ADDED ") 
 
 
     def exitmenu(self):
@@ -111,7 +111,7 @@ class Text_Preprocesser():
 
     
     def helpmenu(self):
-        pass
+        msg.showinfo("Help", "Insert a .txt file and use the buttons to preprocess it")
     
     def aboutmenu(self):
         msg.showinfo("About", "Version 1.0")
