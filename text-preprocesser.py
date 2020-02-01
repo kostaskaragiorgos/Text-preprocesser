@@ -48,7 +48,7 @@ class Text_Preprocesser():
         self.wordcanddist.pack()
     
     def closef(self):
-        """ CLOSES FILE """
+        """ closes file """
         self.filename = ""
         self.rempun.configure(state="disable")
         self.wordcanddist.configure(state = "disable")
@@ -104,7 +104,6 @@ class Text_Preprocesser():
 
     def stopw(self):
         """ removes stop words"""
-        
         file1 = open(str(self.filename),'r') 
         line = file1.read()
         words = line.split() 
