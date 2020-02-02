@@ -67,7 +67,6 @@ class Text_Preprocesser():
     
     def rempun(self):
         """ removes every kind of punctuation """
-
         remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
         file = open(str(self.filename),'r') 
         line = file.read()
