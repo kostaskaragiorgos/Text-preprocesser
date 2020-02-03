@@ -6,6 +6,12 @@
 <li> text pre version(version file) </li>
 </ul>
 
+# Dependencies
+
+ <ul>
+  <li> nltk (conda install -c anaconda nltk) </li>
+</ul>
+
 
 **Current Version**
 
