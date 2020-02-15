@@ -1,7 +1,12 @@
 File menu
 =============
+Insert a file 
+Close a file 
 Exit Alt + F4
 =============
+Edit menu 
+=========
+==========
 About menu
 ==============
 About Ctrl + I

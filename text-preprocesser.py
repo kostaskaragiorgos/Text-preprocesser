@@ -23,6 +23,12 @@ class Text_Preprocesser():
         self.file_menu.add_command(label = "Close a file",state="disable",command = self.closef)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
+
+        self.edit_menu = Menu(self.menu,tearoff = 0)
+        self.edit_menu.add_command(label = "Remove stop words")
+        self.edit_menu.add_command(label = "Remove punctuation")
+        self.edit_menu.add_command(label = "Word counter and distribution")
+        self.menu.add_cascade(label = "Edit", menu = self.edit_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
         self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command=self.aboutmenu)
