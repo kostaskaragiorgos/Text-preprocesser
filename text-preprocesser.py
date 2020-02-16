@@ -26,7 +26,7 @@ class Text_Preprocesser():
 
         self.edit_menu = Menu(self.menu,tearoff = 0)
         self.edit_menu.add_command(label = "Remove stop words",accelerator = 'Alt + R',command = self.stopw)
-        self.edit_menu.add_command(label = "Remove punctuation",accelerator = 'Alt + P',command = self.rempun)
+        self.edit_menu.add_command(label = "Remove punctuation",accelerator = 'Alt + P',command = self.rempunf)
         self.edit_menu.add_command(label = "Word counter and distribution",accelerator = 'Alt + W',command = self.wcd)
         self.menu.add_cascade(label = "Edit", menu = self.edit_menu)
         
@@ -42,12 +42,15 @@ class Text_Preprocesser():
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: self.aboutmenu())
+        self.master.bind('<Alt-r>',lambda event: self.stopw())
+        self.master.bind('<Alt-p>',lambda event: self.rempunf())
+        self.master.bind('<Alt-w>',lambda event: self.wcd())
 
         #buttons
         self.remsstop = Button(self.master, text = "REMOVE STOP WORDS",command = self.stopw ,state="disable")
         self.remsstop.pack()
 
-        self.rempun  = Button(self.master, text = "REMOVE PUNCTUATION",command = self.rempun , state="disable")
+        self.rempun  = Button(self.master, text = "REMOVE PUNCTUATION",command = self.rempunf , state="disable")
         self.rempun.pack()
 
         self.wordcanddist = Button(self.master, text = "WORD COUNTER AND DISTRIBUTION",command = self.wcd,state = "disable")
@@ -74,7 +77,7 @@ class Text_Preprocesser():
             fdist = nltk.FreqDist(token)
             msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()) )
     
-    def rempun(self):
+    def rempunf(self):
         """ removes every kind of punctuation """
         if self.filename == "":
             msg.showerror("ERROR","IMPORT A .TXT FILE")
