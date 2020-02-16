@@ -25,9 +25,9 @@ class Text_Preprocesser():
         self.menu.add_cascade(label = "File",menu=self.file_menu)
 
         self.edit_menu = Menu(self.menu,tearoff = 0)
-        self.edit_menu.add_command(label = "Remove stop words")
-        self.edit_menu.add_command(label = "Remove punctuation")
-        self.edit_menu.add_command(label = "Word counter and distribution")
+        self.edit_menu.add_command(label = "Remove stop words",accelerator = 'Alt + R',command = self.stopw)
+        self.edit_menu.add_command(label = "Remove punctuation",accelerator = 'Alt + P',command = self.rempun)
+        self.edit_menu.add_command(label = "Word counter and distribution",accelerator = 'Alt + W',command = self.wcd)
         self.menu.add_cascade(label = "Edit", menu = self.edit_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
@@ -65,27 +65,33 @@ class Text_Preprocesser():
     
     def wcd(self):
         """ prints the number of words and the words distribution"""
-        file  = open(str(self.filename),'r')
-        line =file.read()
-        token = word_tokenize(line)
-        fdist = nltk.FreqDist(token)
-        msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()) )
+        if self.filename == "":
+            msg.showerror("ERROR" , "IMPORT A .TXT FILE")
+        else:
+            file  = open(str(self.filename),'r')
+            line =file.read()
+            token = word_tokenize(line)
+            fdist = nltk.FreqDist(token)
+            msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()) )
     
     def rempun(self):
         """ removes every kind of punctuation """
-        remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
-        file = open(str(self.filename),'r') 
-        line = file.read()
-        self.filenamesave2 =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-        if ".txt" in self.filenamesave2:
-            for r in line:
-                if r not in string.punctuation:
-                    appendFile = open(str(self.filenamesave2)+".txt",'a') 
-                    appendFile.write(r) 
-                    appendFile.close()
-            msg.showinfo("SUCCESS","PUNCTUATION REMOVED SUCCESSFULLY")
+        if self.filename == "":
+            msg.showerror("ERROR","IMPORT A .TXT FILE")
         else:
-            msg.showerror("Abort","Abort")
+            remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
+            file = open(str(self.filename),'r') 
+            line = file.read()
+            self.filenamesave2 =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
+            if ".txt" in self.filenamesave2:
+                for r in line:
+                    if r not in string.punctuation:
+                        appendFile = open(str(self.filenamesave2)+".txt",'a') 
+                        appendFile.write(r) 
+                        appendFile.close()
+                msg.showinfo("SUCCESS","PUNCTUATION REMOVED SUCCESSFULLY")
+            else:
+                msg.showerror("Abort","Abort")
    
     
     def addf(self):
@@ -109,19 +115,22 @@ class Text_Preprocesser():
 
     def stopw(self):
         """ removes stop words"""
-        file1 = open(str(self.filename),'r') 
-        line = file1.read()
-        words = line.split() 
-        self.filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-        if ".txt" in self.filenamesave:
-            for r in words: 
-                if not r in self.stop_words: 
-                    appendFile = open(str(self.filenamesave)+".txt",'a') 
-                    appendFile.write(r) 
-                    appendFile.close()
-            msg.showinfo("SUCCESS","STOP WORDS REMOVED SUCCESSFULLY")
+        if self.filename == "":
+            msg.showerror("ERROR","IMPORT A .TXT FILE")
         else:
-            msg.showerror("Abort","Abort")
+            file1 = open(str(self.filename),'r') 
+            line = file1.read()
+            words = line.split() 
+            self.filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
+            if ".txt" in self.filenamesave:
+                for r in words: 
+                    if not r in self.stop_words: 
+                        appendFile = open(str(self.filenamesave)+".txt",'a') 
+                        appendFile.write(r) 
+                        appendFile.close()
+                msg.showinfo("SUCCESS","STOP WORDS REMOVED SUCCESSFULLY")
+            else:
+                msg.showerror("Abort","Abort")
             
 
     
