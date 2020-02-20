@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Tk, Menu, Button
 from tkinter import messagebox as msg
 from tkinter import filedialog
 import string
