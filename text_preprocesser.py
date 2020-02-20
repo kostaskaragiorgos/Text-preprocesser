@@ -104,6 +104,7 @@ class TextPreprocesser():
         else:
             msg.showerror("ERROR", "NO TXT FILE ADDED ")
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def stopw(self):
@@ -125,8 +126,10 @@ class TextPreprocesser():
             else:
                 msg.showerror("Abort", "Abort")
     def helpmenu(self):
+        """ help menu function"""
         msg.showinfo("Help", "Insert a .txt file and use the buttons to preprocess it")
     def aboutmenu(self):
+        """ about menu function """
         msg.showinfo("About", "Version 1.0")
 def main():
     root = Tk()
@@ -134,4 +137,3 @@ def main():
     root.mainloop() 
 if __name__ == '__main__':
     main()
-    
