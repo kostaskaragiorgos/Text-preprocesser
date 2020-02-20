@@ -93,7 +93,7 @@ class TextPreprocesser():
     def addf(self):
         """ inserts a .txt file and activates the buttons"""
         self.filename = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                 filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+                                                   filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
         if ".txt" in self.filename:
             msg.showinfo("SUCCESS", "TXT FILE ADDED SUCCESSFULLY")
             self.rempun.configure(state="active")
