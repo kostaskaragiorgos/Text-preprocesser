@@ -6,6 +6,10 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 import nltk
 class TextPreprocesser():
+    """ 
+    text preprocesser
+    You can remove stop words , punctuation from texts
+     """
     def __init__(self, master):
         self.master = master
         self.master.title("Text Preprocesser")
