@@ -76,7 +76,7 @@ class TextPreprocesser():
         if self.filename == "":
             msg.showerror("ERROR", "IMPORT A .TXT FILE")
         else:
-            remove = dict.fromkeys(map(ord, '\n ' + string.punctuation))
+            dict.fromkeys(map(ord, '\n ' + string.punctuation))
             file = open(str(self.filename), 'r') 
             line = file.read()
             self.filenamesave2 =  filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
@@ -132,6 +132,7 @@ class TextPreprocesser():
         """ about menu function """
         msg.showinfo("About", "Version 1.0")
 def main():
+    """ main function """ 
     root = Tk()
     TextPreprocesser(root)
     root.mainloop() 
