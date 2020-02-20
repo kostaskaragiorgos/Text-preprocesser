@@ -12,27 +12,23 @@ class TextPreprocesser():
         self.master.geometry("250x150")
         self.master.resizable(False, False)
         self.filename = ""
-		self.stop_words = set(stopwords.words('english'))
+        self.stop_words = set(stopwords.words('english'))
         # menu
         self.menu = Menu(self.master)
-        #FILE MENU 
-		self.file_menu = Menu(self.menu, tearoff=0)
+        self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Insert a file", command=self.addf)
         self.file_menu.add_command(label="Close a file", state="disable", command=self.closef)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
-		#EDIT MENU
         self.edit_menu = Menu(self.menu, tearoff=0)
         self.edit_menu.add_command(label="Remove stop words", accelerator='Alt + R', command=self.stopw)
         self.edit_menu.add_command(label="Remove punctuation", accelerator='Alt + P', command=self.rempunf)
         self.edit_menu.add_command(label="Word counter and distribution", accelerator='Alt + W', command=self.wcd)
         self.menu.add_cascade(label="Edit", menu=self.edit_menu)
-		#ABOUT
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
-        #HELP
-		self.help_menu = Menu(self.menu, tearoff=0)
+        self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=self.helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         #keybinds
