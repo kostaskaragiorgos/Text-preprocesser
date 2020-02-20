@@ -133,7 +133,7 @@ class TextPreprocesser():
         msg.showinfo("About", "Version 1.0")
 def main():
     root = Tk()
-    tp = TextPreprocesser(root)
+    TextPreprocesser(root)
     root.mainloop() 
 if __name__ == '__main__':
     main()
