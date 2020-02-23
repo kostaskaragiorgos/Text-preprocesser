@@ -1,14 +1,18 @@
+"""
+ text preprocesser
+    You can remove stop words , punctuation from texts
+    """
+
 from tkinter import Tk, Menu, Button
 from tkinter import messagebox as msg
 from tkinter import filedialog
 import string
-from nltk.corpus import stopwords 
+from nltk.corpus import stopwords
 from nltk import word_tokenize
 import nltk
 class TextPreprocesser():
-    """ 
-    text preprocesser
-    You can remove stop words , punctuation from texts
+    """
+    Text Preprocesser class
      """
     def __init__(self, master):
         self.master = master
@@ -25,8 +29,10 @@ class TextPreprocesser():
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.edit_menu = Menu(self.menu, tearoff=0)
-        self.edit_menu.add_command(label="Remove stop words", accelerator='Alt + R', command=self.stopw)
-        self.edit_menu.add_command(label="Remove punctuation", accelerator='Alt + P', command=self.rempunf)
+        self.edit_menu.add_command(label="Remove stop words",
+                                   accelerator='Alt + R', command=self.stopw)
+        self.edit_menu.add_command(label="Remove punctuation", 
+                                   accelerator='Alt + P', command=self.rempunf)
         self.edit_menu.add_command(label="Word counter and distribution", accelerator='Alt + W', command=self.wcd)
         self.menu.add_cascade(label="Edit", menu=self.edit_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
@@ -79,7 +85,7 @@ class TextPreprocesser():
             dict.fromkeys(map(ord, '\n ' + string.punctuation))
             file = open(str(self.filename), 'r') 
             line = file.read()
-            self.filenamesave2 =  filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            self.filenamesave2 = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filenamesave2:
                 for r in line:
                     if r not in string.punctuation:
@@ -115,7 +121,7 @@ class TextPreprocesser():
             file1 = open(str(self.filename), 'r') 
             line = file1.read()
             words = line.split() 
-            self.filenamesave =  filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filenamesave:
                 for r in words: 
                     if not r in self.stop_words: 
