@@ -10,6 +10,12 @@ import string
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 import nltk
+def helpmenu():
+    """ help menu function"""
+    msg.showinfo("Help", "Insert a .txt file and use the buttons to preprocess it")
+def aboutmenu():
+    """ about menu function """
+    msg.showinfo("About", "Version 1.0")
 class TextPreprocesser():
     """
     Text Preprocesser class
@@ -33,24 +39,26 @@ class TextPreprocesser():
                                    accelerator='Alt + R', command=self.stopw)
         self.edit_menu.add_command(label="Remove punctuation", 
                                    accelerator='Alt + P', command=self.rempunf)
-        self.edit_menu.add_command(label="Word counter and distribution", accelerator='Alt + W', command=self.wcd)
+        self.edit_menu.add_command(label="Word counter and distribution",
+                                   accelerator='Alt + W', command=self.wcd)
         self.menu.add_cascade(label="Edit", menu=self.edit_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         self.help_menu = Menu(self.menu, tearoff=0)
-        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=self.helpmenu)
+        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         #keybinds
         self.master.config(menu=self.menu)
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
-        self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-F1>', lambda event: helpmenu())
+        self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Alt-r>', lambda event: self.stopw())
         self.master.bind('<Alt-p>', lambda event: self.rempunf())
         self.master.bind('<Alt-w>', lambda event: self.wcd())
         #buttons
-        self.remsstop = Button(self.master, text="REMOVE STOP WORDS", command=self.stopw, state="disable")
+        self.remsstop = Button(self.master, text="REMOVE STOP WORDS",
+                               command=self.stopw, state="disable")
         self.remsstop.pack()
 		#REMOVE PUNCTUATION
         self.rempun = Button(self.master, text="REMOVE PUNCTUATION", command=self.rempunf, state="disable")
@@ -131,12 +139,6 @@ class TextPreprocesser():
                 msg.showinfo("SUCCESS", "STOP WORDS REMOVED SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
-    def helpmenu(self):
-        """ help menu function"""
-        msg.showinfo("Help", "Insert a .txt file and use the buttons to preprocess it")
-    def aboutmenu(self):
-        """ about menu function """
-        msg.showinfo("About", "Version 1.0")
 def main():
     """ main function """ 
     root = Tk()
