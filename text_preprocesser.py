@@ -2,7 +2,6 @@
  text preprocesser
     You can remove stop words , punctuation from texts
     """
-
 from tkinter import Tk, Menu, Button
 from tkinter import messagebox as msg
 from tkinter import filedialog
@@ -77,7 +76,7 @@ class TextPreprocesser():
         msg.showinfo("CLOSE", "FILE SUCCESSFULLY CLOSED")
     def wcd(self):
         """ prints the number of words and the words distribution"""
-        if self.filename == "":
+        if not ".txt" in self.filename:
             msg.showerror("ERROR", "IMPORT A .TXT FILE")
         else:
             file = open(str(self.filename), 'r')
@@ -87,7 +86,7 @@ class TextPreprocesser():
             msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()))
     def rempunf(self):
         """ removes every kind of punctuation """
-        if self.filename == "":
+        if not ".txt" in self.filename:
             msg.showerror("ERROR", "IMPORT A .TXT FILE")
         else:
             dict.fromkeys(map(ord, '\n ' + string.punctuation))
@@ -116,6 +115,7 @@ class TextPreprocesser():
             self.file_menu.entryconfig("Insert a file", state="disable")
             self.file_menu.entryconfig("Close a file", state="active")
         else:
+            self.filename == ""
             msg.showerror("ERROR", "NO TXT FILE ADDED ")
     def exitmenu(self):
         """ exit menu function """
@@ -123,7 +123,7 @@ class TextPreprocesser():
             self.master.destroy()
     def stopw(self):
         """ removes stop words"""
-        if self.filename == "":
+        if not ".txt" in self.filename:
             msg.showerror("ERROR", "IMPORT A .TXT FILE")
         else:
             file1 = open(str(self.filename), 'r') 
