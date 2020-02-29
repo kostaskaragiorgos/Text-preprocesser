@@ -10,12 +10,17 @@
 
 <ul>
   <li> nltk (conda install -c anaconda nltk) </li>
+  <li> radon (conda install -c conda-forge radon) </li>
 </ul>
 
 
 **Current Version**
 
 <p><img src ="text pre version.png" title = "TEXT-PREPROCESSER  Version"/> </p>
+
+**Radon**
+
+<p><img src ="text_preprocesser radon cc.png" title = "Text Preprocesser radon cc"/> </p>
 
 ## Keybinds
 
