@@ -40,7 +40,8 @@ class TextPreprocesser():
                                    accelerator='Alt + P', command=self.rempunf)
         self.edit_menu.add_command(label="Word counter and distribution",
                                    accelerator='Alt + W', command=self.wcd)
-        self.edit_menu.add_command(label="Words to lower case", command=self.wordlow)
+        self.edit_menu.add_command(label="Words to lower case",
+                                   accelerator='Ctrl+L', command=self.wordlow)
         self.menu.add_cascade(label="Edit", menu=self.edit_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
@@ -56,6 +57,7 @@ class TextPreprocesser():
         self.master.bind('<Alt-r>', lambda event: self.stopw())
         self.master.bind('<Alt-p>', lambda event: self.rempunf())
         self.master.bind('<Alt-w>', lambda event: self.wcd())
+        self.master.bind('<Control-l>', lambda event: self.wordlow())
         #buttons
         self.remsstop = Button(self.master, text="REMOVE STOP WORDS",
                                command=self.stopw, state="disable")
@@ -78,8 +80,8 @@ class TextPreprocesser():
         self.file_menu.entryconfig("Close a file", state="disable")
         self.file_menu.entryconfig("Insert a file", state="active")
         msg.showinfo("CLOSE", "FILE SUCCESSFULLY CLOSED")
-    
     def wordlow(self):
+        """ converts to lowercase"""
         if not ".txt" in self.filename:
             msg.showerror("ERROR", "IMPORT A .TXT FILE")
         else:
