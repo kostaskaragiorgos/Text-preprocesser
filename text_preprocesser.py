@@ -40,6 +40,7 @@ class TextPreprocesser():
                                    accelerator='Alt + P', command=self.rempunf)
         self.edit_menu.add_command(label="Word counter and distribution",
                                    accelerator='Alt + W', command=self.wcd)
+        self.edit_menu.add_command(label="Words to lower case", command=self.wordlow)
         self.menu.add_cascade(label="Edit", menu=self.edit_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
@@ -65,15 +66,35 @@ class TextPreprocesser():
 		#WORD COUNTER AND DISTRIBUTION
         self.wordcanddist = Button(self.master, text="WORD COUNTER AND DISTRIBUTION", command=self.wcd, state="disable")
         self.wordcanddist.pack()
+        self.wordstolower = Button(self.master, text="WORDS TO LOWER CASE", command=self.wordlow, state="disable")
+        self.wordstolower.pack()
     def closef(self):
         """ closes file """
         self.filename = ""
+        self.wordstolower.configure(state="disable")
         self.rempun.configure(state="disable")
         self.wordcanddist.configure(state="disable")
         self.remsstop.configure(state="disable")
         self.file_menu.entryconfig("Close a file", state="disable")
         self.file_menu.entryconfig("Insert a file", state="active")
         msg.showinfo("CLOSE", "FILE SUCCESSFULLY CLOSED")
+    
+    def wordlow(self):
+        if not ".txt" in self.filename:
+            msg.showerror("ERROR", "IMPORT A .TXT FILE")
+        else:
+            file1 = open(str(self.filename), 'r') 
+            line = file1.read()
+            words = line.lower()
+            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            if ".txt" in self.filenamesave:
+                for r in words: 
+                    append_file = open(str(self.filenamesave)+".txt", 'a') 
+                    append_file.write(r) 
+                    append_file.close()
+                msg.showinfo("SUCCESS", "WORDS CONVERTED TO LOWER CASE SUCCESSFULLY")
+            else:
+                msg.showerror("Abort", "Abort")
     def wcd(self):
         """ prints the number of words and the words distribution"""
         if not ".txt" in self.filename:
@@ -112,6 +133,7 @@ class TextPreprocesser():
             self.rempun.configure(state="active")
             self.wordcanddist.configure(state="active")
             self.remsstop.configure(state="active")
+            self.wordstolower.configure(state="active")
             self.file_menu.entryconfig("Insert a file", state="disable")
             self.file_menu.entryconfig("Close a file", state="active")
         else:
