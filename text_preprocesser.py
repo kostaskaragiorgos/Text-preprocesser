@@ -36,7 +36,7 @@ class TextPreprocesser():
         self.edit_menu = Menu(self.menu, tearoff=0)
         self.edit_menu.add_command(label="Remove stop words",
                                    accelerator='Alt + R', command=self.stopw)
-        self.edit_menu.add_command(label="Remove punctuation", 
+        self.edit_menu.add_command(label="Remove punctuation",
                                    accelerator='Alt + P', command=self.rempunf)
         self.edit_menu.add_command(label="Word counter and distribution",
                                    accelerator='Alt + W', command=self.wcd)
@@ -63,12 +63,15 @@ class TextPreprocesser():
                                command=self.stopw, state="disable")
         self.remsstop.pack()
 		#REMOVE PUNCTUATION
-        self.rempun = Button(self.master, text="REMOVE PUNCTUATION", command=self.rempunf, state="disable")
+        self.rempun = Button(self.master, text="REMOVE PUNCTUATION",
+                             command=self.rempunf, state="disable")
         self.rempun.pack()
 		#WORD COUNTER AND DISTRIBUTION
-        self.wordcanddist = Button(self.master, text="WORD COUNTER AND DISTRIBUTION", command=self.wcd, state="disable")
+        self.wordcanddist = Button(self.master, text="WORD COUNTER AND DISTRIBUTION",
+                                   command=self.wcd, state="disable")
         self.wordcanddist.pack()
-        self.wordstolower = Button(self.master, text="WORDS TO LOWER CASE", command=self.wordlow, state="disable")
+        self.wordstolower = Button(self.master, text="WORDS TO LOWER CASE",
+                                   command=self.wordlow, state="disable")
         self.wordstolower.pack()
     def closef(self):
         """ closes file """
