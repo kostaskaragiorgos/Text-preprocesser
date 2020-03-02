@@ -31,6 +31,7 @@
 <li> Remove stop words Alt + R </li>
 <li> Remove punctuation Alt + P </li>
 <li> Word counter and distibution Alt + W </li>
+<li> Words to lower case Ctrl + W </li>
 <li> About Ctrl + I </li>
 <li> Help Ctrl + F1 </li>
 </ul>
