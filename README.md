@@ -21,6 +21,9 @@
 **Radon**
 
 <p><img src ="text_preprocesser radon cc.png" title = "Text Preprocesser radon cc"/> </p>
+<p><img src ="text_preprocesser radon hal.png" title = "Text Preprocesser radon hal"/> </p>
+<p><img src ="text_preprocesser radon mi.png" title = "Text Preprocesser radon mi"/> </p>
+<p><img src ="text_preprocesser radon raw.png" title = "Text Preprocesser radon raw"/> </p>
 
 ## Keybinds
 
