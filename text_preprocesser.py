@@ -29,7 +29,7 @@ class TextPreprocesser():
         # menu
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
-        self.file_menu.add_command(label="Insert a file", command=self.addf)
+        self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.addf)
         self.file_menu.add_command(label="Close a file", accelerator='Ctrl+F5', state="disable", command=self.closef)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
@@ -51,6 +51,7 @@ class TextPreprocesser():
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         #keybinds
         self.master.config(menu=self.menu)
+        self.master.bind('<Control-o>', lambda event: self.addf())
         self.master.bind('<Control-F5>', lambda event: self.closef())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
@@ -135,19 +136,22 @@ class TextPreprocesser():
                 msg.showerror("Abort", "Abort")
     def addf(self):
         """ inserts a .txt file and activates the buttons"""
-        self.filename = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                   filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
-        if ".txt" in self.filename:
-            msg.showinfo("SUCCESS", "TXT FILE ADDED SUCCESSFULLY")
-            self.rempun.configure(state="active")
-            self.wordcanddist.configure(state="active")
-            self.remsstop.configure(state="active")
-            self.wordstolower.configure(state="active")
-            self.file_menu.entryconfig("Insert a file", state="disable")
-            self.file_menu.entryconfig("Close a file", state="active")
+        if not self.filename == "":
+            msg.showerror("ERROR","FILE IS ALREADY OPEN")
         else:
-            self.filename == ""
-            msg.showerror("ERROR", "NO TXT FILE ADDED ")
+            self.filename = filedialog.askopenfilename(initialdir="/", title="Select txt file",
+                                                   filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            if ".txt" in self.filename:
+                msg.showinfo("SUCCESS", "TXT FILE ADDED SUCCESSFULLY")
+                self.rempun.configure(state="active")
+                self.wordcanddist.configure(state="active")
+                self.remsstop.configure(state="active")
+                self.wordstolower.configure(state="active")
+                self.file_menu.entryconfig("Insert a file", state="disable")
+                self.file_menu.entryconfig("Close a file", state="active")
+            else:
+                self.filename == ""
+                msg.showerror("ERROR", "NO TXT FILE ADDED ")
     def exitmenu(self):
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
