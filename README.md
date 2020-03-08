@@ -28,8 +28,8 @@
 ## Keybinds
 
 <ul>
-<li> Insert a file </li>
-<li> Close a file </li>
+<li> Insert a file Ctrl + O </li>
+<li> Close a file Ctrl + F5 </li>
 <li> Exit Alt + F4 </li>
 <li> Remove stop words Alt + R </li>
 <li> Remove punctuation Alt + P </li>
