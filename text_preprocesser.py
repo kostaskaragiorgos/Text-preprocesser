@@ -30,7 +30,7 @@ class TextPreprocesser():
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Insert a file", command=self.addf)
-        self.file_menu.add_command(label="Close a file", state="disable", command=self.closef)
+        self.file_menu.add_command(label="Close a file", accelerator='Ctrl+F5', state="disable", command=self.closef)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.edit_menu = Menu(self.menu, tearoff=0)
@@ -51,6 +51,7 @@ class TextPreprocesser():
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         #keybinds
         self.master.config(menu=self.menu)
+        self.master.bind('<Control-F5>', lambda event: self.closef())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
@@ -75,14 +76,17 @@ class TextPreprocesser():
         self.wordstolower.pack()
     def closef(self):
         """ closes file """
-        self.filename = ""
-        self.wordstolower.configure(state="disable")
-        self.rempun.configure(state="disable")
-        self.wordcanddist.configure(state="disable")
-        self.remsstop.configure(state="disable")
-        self.file_menu.entryconfig("Close a file", state="disable")
-        self.file_menu.entryconfig("Insert a file", state="active")
-        msg.showinfo("CLOSE", "FILE SUCCESSFULLY CLOSED")
+        if  self.filename == "":
+            msg.showerror("ERROR", "NO .TXT FILE TO CLOSE")
+        else:
+            self.filename = ""
+            self.wordstolower.configure(state="disable")
+            self.rempun.configure(state="disable")
+            self.wordcanddist.configure(state="disable")
+            self.remsstop.configure(state="disable")
+            self.file_menu.entryconfig("Close a file", state="disable")
+            self.file_menu.entryconfig("Insert a file", state="active")
+            msg.showinfo("CLOSE", "FILE SUCCESSFULLY CLOSED")
     def wordlow(self):
         """ converts to lowercase"""
         if not ".txt" in self.filename:
