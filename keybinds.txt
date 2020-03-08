@@ -1,7 +1,7 @@
 File menu
-=============
-Insert a file 
-Close a file 
+======================
+Insert a file Ctrl + O
+Close a file Ctrl + F5
 Exit Alt + F4
 =============
 Edit menu 
@@ -9,6 +9,7 @@ Edit menu
 Remove stop words Alt + R
 Remove punctuation Alt + P
 Word counter and distribution Alt + W
+Words to lower case Ctrl + L
 =====================================
 About menu
 ==============
