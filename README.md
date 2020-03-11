@@ -31,11 +31,11 @@
 </ul>
 
 
-**Current Version**
+## Current Version
 
 <p><img src ="text pre version.png" title = "TEXT-PREPROCESSER  Version"/> </p>
 
-**Radon**
+## Radon
 
 <p><img src ="text_preprocesser radon cc.png" title = "Text Preprocesser radon cc"/> </p>
 <p><img src ="text_preprocesser radon hal.png" title = "Text Preprocesser radon hal"/> </p>
