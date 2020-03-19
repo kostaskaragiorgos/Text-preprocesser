@@ -9,7 +9,7 @@
 <!--ts-->
   * [Text-preprocesser](#Text-preprocesser)
   * [Table of contents](#Table_of_contents)
-  * [Files](#FILES)
+  * [Files](#Files)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
   * [Radon](#Radon)
@@ -17,7 +17,7 @@
   * [License](#License)
 
 
-## FILES 
+## Files
 <ul>
 <li> text-preprocesser.py(the main file)</li>
 <li> text pre version(version file) </li>
