@@ -9,6 +9,8 @@ import string
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 import nltk
+def showstopwordlan():
+    msg.showinfo("STOP WORDS LANGUAGES", "ENGLISH")
 def helpmenu():
     """ help menu function"""
     msg.showinfo("Help", "Insert a .txt file and use the buttons to preprocess it")
@@ -44,7 +46,7 @@ class TextPreprocesser():
         self.show_menu = Menu(self.menu, tearoff=0)
         self.show_menu.add_command(label="Word counter and distribution",
                                    accelerator='Alt + W', command=self.wcd)
-        self.show_menu.add_command(label="Available Stop Words")
+        self.show_menu.add_command(label="Available Stop Words", command=showstopwordlan)
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
