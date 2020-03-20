@@ -46,7 +46,7 @@ class TextPreprocesser():
         self.show_menu = Menu(self.menu, tearoff=0)
         self.show_menu.add_command(label="Word counter and distribution",
                                    accelerator='Alt + W', command=self.wcd)
-        self.show_menu.add_command(label="Available Stop Words", command=showstopwordlan)
+        self.show_menu.add_command(label="Available Stop Words Lan", accelerator='Ctrl + S', command=showstopwordlan)
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
@@ -56,6 +56,7 @@ class TextPreprocesser():
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         #keybinds
         self.master.config(menu=self.menu)
+        self.master.bind('<Control-s>', lambda event: showstopwordlan())
         self.master.bind('<Control-o>', lambda event: self.addf())
         self.master.bind('<Control-F5>', lambda event: self.closef())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
