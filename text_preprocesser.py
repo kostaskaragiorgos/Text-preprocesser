@@ -38,11 +38,14 @@ class TextPreprocesser():
                                    accelerator='Alt + R', command=self.stopw)
         self.edit_menu.add_command(label="Remove punctuation",
                                    accelerator='Alt + P', command=self.rempunf)
-        self.edit_menu.add_command(label="Word counter and distribution",
-                                   accelerator='Alt + W', command=self.wcd)
         self.edit_menu.add_command(label="Words to lower case",
                                    accelerator='Ctrl+L', command=self.wordlow)
         self.menu.add_cascade(label="Edit", menu=self.edit_menu)
+        self.show_menu = Menu(self.menu, tearoff=0)
+        self.show_menu.add_command(label="Word counter and distribution",
+                                   accelerator='Alt + W', command=self.wcd)
+        self.show_menu.add_command(label="Available Stop Words")
+        self.menu.add_cascade(label="Show", menu=self.show_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
