@@ -10,6 +10,7 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 import nltk
 def showstopwordlan():
+    """ shows the languages where stopwords are available """  
     msg.showinfo("STOP WORDS LANGUAGES", "ENGLISH")
 def helpmenu():
     """ help menu function"""
