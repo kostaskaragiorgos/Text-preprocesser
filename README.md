@@ -27,7 +27,9 @@
 
 <ul>
   <li> nltk (conda install -c anaconda nltk) </li>
+  <li> second way to install nltk (pip install nltk) </li>
   <li> radon (conda install -c conda-forge radon) </li>
+  <li> second way to install radon (pip install radon) </li>
 </ul>
 
 
