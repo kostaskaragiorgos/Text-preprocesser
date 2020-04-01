@@ -35,14 +35,14 @@
 
 ## Current Version
 
-<p><img src ="text pre version.png" title = "TEXT-PREPROCESSER  Version"/> </p>
+<p><img src ="images/text pre version.png" title = "TEXT-PREPROCESSER  Version"/> </p>
 
 ## Radon
 
-<p><img src ="text_preprocesser radon cc.png" title = "Text Preprocesser radon cc"/> </p>
-<p><img src ="text_preprocesser radon hal.png" title = "Text Preprocesser radon hal"/> </p>
-<p><img src ="text_preprocesser radon mi.png" title = "Text Preprocesser radon mi"/> </p>
-<p><img src ="text_preprocesser radon raw.png" title = "Text Preprocesser radon raw"/> </p>
+<p><img src ="images/text_preprocesser radon cc.png" title = "Text Preprocesser radon cc"/> </p>
+<p><img src ="images/text_preprocesser radon hal.png" title = "Text Preprocesser radon hal"/> </p>
+<p><img src ="images/text_preprocesser radon mi.png" title = "Text Preprocesser radon mi"/> </p>
+<p><img src ="images/text_preprocesser radon raw.png" title = "Text Preprocesser radon raw"/> </p>
 
 ## Keybinds
 
