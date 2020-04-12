@@ -12,15 +12,17 @@
   * [Files](#Files)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
+  * [Documentation](#Documentation)
   * [Radon](#Radon)
   * [Keybinds](#Keybinds)
   * [License](#License)
 
 
-## Files
+## Files/Folders
 <ul>
-<li> text-preprocesser.py(the main file)</li>
-<li> text pre version(version file) </li>
+  <li> doc(documentation folder) </li>
+  <li> images(images folder) </li>
+  <li> text-preprocesser.py(the main file)</li>
 </ul>
 
 # Dependencies
@@ -36,6 +38,10 @@
 ## Current Version
 
 <p><img src ="images/text pre version.png" title = "TEXT-PREPROCESSER  Version"/> </p>
+
+## Documentation
+
+All project documentation is located in the `./doc`  folder.
 
 ## Radon
 
