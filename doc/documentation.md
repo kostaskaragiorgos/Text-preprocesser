@@ -54,4 +54,24 @@ You press ok to close the app or cancel if you don't want
 
 ## Word counter and distribution
 
+You can see the word counter and distribution using menu Show --> Word counter and distribution or using Alt + W keybind
+
+<p><img src ="doc images/show/word counter and dist.png" title="word counter and dist"/> </p>
+
+if a file is not imported an informative message pops up
+
+<p><img src ="doc images/show/words and d error.png" title="word counter and dist error"/> </p>
+
+else an informative message pops up
+
+<p><img src ="doc images/show/word and counter dist suc.png" title="words and counter dist"/> </p>
+
 ## Available Stop Words Lan
+
+You can see the available stop words using menu Show --> Available Stop Words Lan or using Ctrl+S keybind
+
+<p><img src ="doc images/show/av lan.png" title="available stop words"/> </p>
+
+An informative message pops up
+
+<p><img src ="doc images/show/av lan pop up.png" title="available stop words pop up"/> </p>
