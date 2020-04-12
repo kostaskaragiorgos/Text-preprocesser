@@ -46,9 +46,33 @@ You press ok to close the app or cancel if you don't want
 
 ## Remove stop words
 
+You can remove stop words using menu Edit --> Remove stop words or using Alt+R
+
+<p><img src="doc images/edit/remove stop words.png" title = "remove stop words"/></p>
+
+if a file is not imported an informative message pops up
+
+<p><img src ="doc images/edit/no file imported error.png" title="no file imported"/> </p>
+
 ## Remove punctuation
 
+You can remove stop words using menu Edit --> Remove punctuation or using Alt+P
+
+<p><img src="doc images/edit/remove punctuation.png" title = "remove punctuation"/></p>
+
+if a file is not imported an informative message pops up
+
+<p><img src ="doc images/edit/no file imported error.png" title="no file imported"/> </p>
+
 ## Words to lower case
+
+You can remove stop words using menu Edit --> Words to lower case or using Ctrl+L
+
+<p><img src="doc images/edit/words to lower case.png" title = "word to lower case"/></p>
+
+if a file is not imported an informative message pops up
+
+<p><img src ="doc images/edit/no file imported error.png" title="no file imported"/> </p>
 
 # Show menu
 
