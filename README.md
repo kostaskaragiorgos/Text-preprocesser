@@ -14,6 +14,10 @@
   * [Current Version](#Current_Version)
   * [Documentation](#Documentation)
   * [Radon](#Radon)
+    * [Radon cc](#Radon_cc)
+    * [Radon hal](#Radon_hal)
+    * [Radon mi](#Radon_mi)
+    * [Radon raw](#Radon_raw)
   * [Keybinds](#Keybinds)
   * [License](#License)
 
@@ -23,6 +27,7 @@
   <li> doc(documentation folder) </li>
   <li> images(images folder) </li>
   <li> text-preprocesser.py(the main file)</li>
+  <li> keybinds.txt(keybinds file) </li>
 </ul>
 
 # Dependencies
@@ -45,9 +50,20 @@ All project documentation is located in the `./doc`  folder.
 
 ## Radon
 
+### Radon_cc
+
 <p><img src ="images/text_preprocesser radon cc.png" title = "Text Preprocesser radon cc"/> </p>
+
+### Radon_hal
+
 <p><img src ="images/text_preprocesser radon hal.png" title = "Text Preprocesser radon hal"/> </p>
+
+### Radon_mi
+
 <p><img src ="images/text_preprocesser radon mi.png" title = "Text Preprocesser radon mi"/> </p>
+
+### Radon_raw
+
 <p><img src ="images/text_preprocesser radon raw.png" title = "Text Preprocesser radon raw"/> </p>
 
 ## Keybinds
