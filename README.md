@@ -9,7 +9,7 @@
 <!--ts-->
   * [Text-preprocesser](#Text-preprocesser)
   * [Table of contents](#Table_of_contents)
-  * [Files](#Files)
+  * [Files/Folders](#Files/Folders)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
   * [Documentation](#Documentation)
