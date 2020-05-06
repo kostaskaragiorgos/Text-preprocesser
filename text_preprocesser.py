@@ -128,6 +128,22 @@ class TextPreprocesser():
             token = word_tokenize(line)
             fdist = nltk.FreqDist(token)
             msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()))
+    def stopw(self):
+        """ removes stop words"""
+        if not ".txt" in self.filename:
+            msg.showerror("ERROR", "IMPORT A .TXT FILE")
+        else:
+            file1 = open(str(self.filename), 'r') 
+            line = file1.read()
+            words = line.split() 
+            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            if ".txt" in self.filenamesave:
+                for r in words: 
+                    if not r in self.stop_words:
+                        file_save(self.filenamesave, r)
+                msg.showinfo("SUCCESS", "STOP WORDS REMOVED SUCCESSFULLY")
+            else:
+                msg.showerror("Abort", "Abort")
     def rempunf(self):
         """ removes every kind of punctuation """
         if not ".txt" in self.filename:
@@ -166,22 +182,6 @@ class TextPreprocesser():
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
-    def stopw(self):
-        """ removes stop words"""
-        if not ".txt" in self.filename:
-            msg.showerror("ERROR", "IMPORT A .TXT FILE")
-        else:
-            file1 = open(str(self.filename), 'r') 
-            line = file1.read()
-            words = line.split() 
-            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
-            if ".txt" in self.filenamesave:
-                for r in words: 
-                    if not r in self.stop_words:
-                        file_save(self.filenamesave, r)
-                msg.showinfo("SUCCESS", "STOP WORDS REMOVED SUCCESSFULLY")
-            else:
-                msg.showerror("Abort", "Abort")
 def main():
     """ main function """ 
     root = Tk()
