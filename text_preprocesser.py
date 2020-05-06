@@ -122,6 +122,11 @@ class TextPreprocesser():
             token = word_tokenize(line)
             fdist = nltk.FreqDist(token)
             msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()))
+    def file_save(self, filename, r):
+        append_file = open(str(filename)+".txt", 'a') 
+        append_file.write(r) 
+        append_file.write(r) 
+        append_file.close()
     def rempunf(self):
         """ removes every kind of punctuation """
         if not ".txt" in self.filename:
@@ -134,10 +139,7 @@ class TextPreprocesser():
             if ".txt" in self.filenamesave2:
                 for r in line:
                     if r not in string.punctuation:
-                        append_file = open(str(self.filenamesave2)+".txt", 'a') 
-                        append_file.write(r) 
-                        append_file.write(r) 
-                        append_file.close()
+                        self.file_save(self.filenamesave2, r)
                 msg.showinfo("SUCCESS", "PUNCTUATION REMOVED SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
@@ -174,10 +176,8 @@ class TextPreprocesser():
             self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filenamesave:
                 for r in words: 
-                    if not r in self.stop_words: 
-                        append_file = open(str(self.filenamesave)+".txt", 'a') 
-                        append_file.write(r) 
-                        append_file.close()
+                    if not r in self.stop_words:
+                        self.file_save(self.filenamesave, r)
                 msg.showinfo("SUCCESS", "STOP WORDS REMOVED SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
