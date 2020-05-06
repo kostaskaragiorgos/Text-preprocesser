@@ -9,6 +9,12 @@ import string
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 import nltk
+def file_save(filename, r):
+    """ creates and saves the new file """
+    append_file = open(str(filename)+".txt", 'a') 
+    append_file.write(r) 
+    append_file.write(r) 
+    append_file.close()
 def showstopwordlan():
     """ shows the languages where stopwords are available """  
     msg.showinfo("STOP WORDS LANGUAGES", "ENGLISH")
@@ -122,11 +128,6 @@ class TextPreprocesser():
             token = word_tokenize(line)
             fdist = nltk.FreqDist(token)
             msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()))
-    def file_save(self, filename, r):
-        append_file = open(str(filename)+".txt", 'a') 
-        append_file.write(r) 
-        append_file.write(r) 
-        append_file.close()
     def rempunf(self):
         """ removes every kind of punctuation """
         if not ".txt" in self.filename:
@@ -139,17 +140,17 @@ class TextPreprocesser():
             if ".txt" in self.filenamesave2:
                 for r in line:
                     if r not in string.punctuation:
-                        self.file_save(self.filenamesave2, r)
+                        file_save(self.filenamesave2, r)
                 msg.showinfo("SUCCESS", "PUNCTUATION REMOVED SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
     def addf(self):
         """ inserts a .txt file and activates the buttons"""
         if not self.filename == "":
-            msg.showerror("ERROR","FILE IS ALREADY OPEN")
+            msg.showerror("ERROR", "FILE IS ALREADY OPEN")
         else:
             self.filename = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                   filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+                                                       filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filename:
                 msg.showinfo("SUCCESS", "TXT FILE ADDED SUCCESSFULLY")
                 self.rempun.configure(state="active")
@@ -177,7 +178,7 @@ class TextPreprocesser():
             if ".txt" in self.filenamesave:
                 for r in words: 
                     if not r in self.stop_words:
-                        self.file_save(self.filenamesave, r)
+                        file_save(self.filenamesave, r)
                 msg.showinfo("SUCCESS", "STOP WORDS REMOVED SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
