@@ -111,10 +111,8 @@ class TextPreprocesser():
             words = line.lower()
             self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filenamesave:
-                for r in words: 
-                    append_file = open(str(self.filenamesave)+".txt", 'a') 
-                    append_file.write(r) 
-                    append_file.close()
+                for r in words:
+                    file_save(self.filenamesave, r)
                 msg.showinfo("SUCCESS", "WORDS CONVERTED TO LOWER CASE SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
@@ -160,6 +158,14 @@ class TextPreprocesser():
                 msg.showinfo("SUCCESS", "PUNCTUATION REMOVED SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
+    def menuchange(self):
+        self.rempun.configure(state="active")
+        self.wordcanddist.configure(state="active")
+        self.remsstop.configure(state="active")
+        self.wordstolower.configure(state="active")
+        self.file_menu.entryconfig("Insert a file", state="disable")
+        self.file_menu.entryconfig("Close a file", state="active")
+
     def addf(self):
         """ inserts a .txt file and activates the buttons"""
         if not self.filename == "":
@@ -169,12 +175,7 @@ class TextPreprocesser():
                                                        filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filename:
                 msg.showinfo("SUCCESS", "TXT FILE ADDED SUCCESSFULLY")
-                self.rempun.configure(state="active")
-                self.wordcanddist.configure(state="active")
-                self.remsstop.configure(state="active")
-                self.wordstolower.configure(state="active")
-                self.file_menu.entryconfig("Insert a file", state="disable")
-                self.file_menu.entryconfig("Close a file", state="active")
+                self.menuchange()
             else:
                 self.filename == ""
                 msg.showerror("ERROR", "NO TXT FILE ADDED ")
