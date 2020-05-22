@@ -11,9 +11,9 @@ from nltk import word_tokenize
 import nltk
 def file_save(filename, r):
     """ creates and saves the new file """
-    append_file = open(str(filename)+".txt", 'a') 
-    append_file.write(r) 
-    append_file.write(r) 
+    append_file = open(str(filename)+".txt", 'a')
+    append_file.write(r)
+    append_file.write(r)
     append_file.close()
 def showstopwordlan():
     """ shows the languages where stopwords are available """  
@@ -39,7 +39,8 @@ class TextPreprocesser():
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.addf)
-        self.file_menu.add_command(label="Close a file", accelerator='Ctrl+F5', state="disable", command=self.closef)
+        self.file_menu.add_command(label="Close a file",
+                                   accelerator='Ctrl+F5', state="disable", command=self.closef)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.edit_menu = Menu(self.menu, tearoff=0)
@@ -53,7 +54,8 @@ class TextPreprocesser():
         self.show_menu = Menu(self.menu, tearoff=0)
         self.show_menu.add_command(label="Word counter and distribution",
                                    accelerator='Alt + W', command=self.wcd)
-        self.show_menu.add_command(label="Available Stop Words Lan", accelerator='Ctrl + S', command=showstopwordlan)
+        self.show_menu.add_command(label="Available Stop Words Lan",
+                                   accelerator='Ctrl + S', command=showstopwordlan)
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
@@ -109,11 +111,15 @@ class TextPreprocesser():
             file1 = open(str(self.filename), 'r') 
             line = file1.read()
             words = line.lower()
-            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            self.filenamesave = filedialog.asksaveasfilename(initialdir="/",
+                                                             title="Select file",
+                                                             filetypes=(("txt files", "*.txt"),
+                                                                        ("all files", "*.*")))
             if ".txt" in self.filenamesave:
                 for r in words:
                     file_save(self.filenamesave, r)
-                msg.showinfo("SUCCESS", "WORDS CONVERTED TO LOWER CASE SUCCESSFULLY")
+                msg.showinfo("SUCCESS",
+                             "WORDS CONVERTED TO LOWER CASE SUCCESSFULLY")
             else:
                 msg.showerror("Abort", "Abort")
     def wcd(self):
@@ -125,7 +131,9 @@ class TextPreprocesser():
             line = file.read()
             token = word_tokenize(line)
             fdist = nltk.FreqDist(token)
-            msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION", "WORDS:" + str(len(token)) + "DISTRIBUTION" + str(fdist.most_common()))
+            msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION",
+                         "WORDS:" + str(len(token)) + 
+                         "DISTRIBUTION" + str(fdist.most_common()))
     def stopw(self):
         """ removes stop words"""
         if not ".txt" in self.filename:
@@ -134,7 +142,9 @@ class TextPreprocesser():
             file1 = open(str(self.filename), 'r') 
             line = file1.read()
             words = line.split() 
-            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            self.filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file",
+                                                             filetypes=(("txt files", "*.txt"),
+                                                                        ("all files", "*.*")))
             if ".txt" in self.filenamesave:
                 for r in words: 
                     if not r in self.stop_words:
@@ -150,7 +160,10 @@ class TextPreprocesser():
             dict.fromkeys(map(ord, '\n ' + string.punctuation))
             file = open(str(self.filename), 'r') 
             line = file.read()
-            self.filenamesave2 = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+            self.filenamesave2 = filedialog.asksaveasfilename(initialdir="/",
+                                                              title="Select file",
+                                                              filetypes=(("txt files", "*.txt"),
+                                                                         ("all files", "*.*")))
             if ".txt" in self.filenamesave2:
                 for r in line:
                     if r not in string.punctuation:
@@ -159,6 +172,7 @@ class TextPreprocesser():
             else:
                 msg.showerror("Abort", "Abort")
     def menuchange(self):
+        """ changes the state of  menus """
         self.rempun.configure(state="active")
         self.wordcanddist.configure(state="active")
         self.remsstop.configure(state="active")
@@ -172,7 +186,8 @@ class TextPreprocesser():
             msg.showerror("ERROR", "FILE IS ALREADY OPEN")
         else:
             self.filename = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                       filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+                                                       filetypes=(("txt files", "*.txt"),
+                                                                  ("all files", "*.*")))
             if ".txt" in self.filename:
                 msg.showinfo("SUCCESS", "TXT FILE ADDED SUCCESSFULLY")
                 self.menuchange()
@@ -187,6 +202,6 @@ def main():
     """ main function """ 
     root = Tk()
     TextPreprocesser(root)
-    root.mainloop() 
+    root.mainloop()
 if __name__ == '__main__':
     main()
