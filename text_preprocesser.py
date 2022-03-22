@@ -35,12 +35,14 @@ class TextPreprocesser():
         self.master.resizable(False, False)
         self.filename = ""
         self.stop_words = set(stopwords.words('english'))
+        self.word_counter = 0
         # menu
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.addf)
         self.file_menu.add_command(label="Close a file",
                                    accelerator='Ctrl+F5', state="disable", command=self.closef)
+        self.file_menu.add_command(label="Create a file report", command=self.filereport)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.edit_menu = Menu(self.menu, tearoff=0)
@@ -90,6 +92,16 @@ class TextPreprocesser():
         self.wordstolower = Button(self.master, text="WORDS TO LOWER CASE",
                                    command=self.wordlow, state="disable")
         self.wordstolower.pack()
+
+    def filereport(self):
+        if self.filename == "":
+            msg.showerror("ERROR", "NO .TXT FILE.\nINSERT A .TXT FILE TO CREATE A REPORT")
+        else:
+            report = open("report.txt", 'w')
+            report.write(str(self.word_counter))
+            report.close()
+
+
     def closef(self):
         """ closes file """
         if  self.filename == "":
@@ -130,9 +142,10 @@ class TextPreprocesser():
             file = open(str(self.filename), 'r')
             line = file.read()
             token = word_tokenize(line)
+            self.wordcounter = len(token)
             fdist = nltk.FreqDist(token)
             msg.showinfo("WORD COUNTER AND WORD DISTRIBUTION",
-                         "WORDS:" + str(len(token)) + 
+                         "WORDS:" + str(self.wordcounter) + 
                          "DISTRIBUTION" + str(fdist.most_common()))
     def stopw(self):
         """ removes stop words"""
