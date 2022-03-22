@@ -30,6 +30,10 @@ else
 
 <p><img src="doc images/file/close file successful.png" title="Close file"/></p>
 
+## Create a report file
+
+You can create a report of the .txt file using menu File --> Create a  report file
+
 ## Exit
 
 You can close the app using menu File --> Exit or using Alt+F4 keybind
