@@ -42,7 +42,7 @@ class TextPreprocesser():
         self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.addf)
         self.file_menu.add_command(label="Close a file",
                                    accelerator='Ctrl+F5', state="disable", command=self.closef)
-        self.file_menu.add_command(label="Create a file report", accelerator='Alt+F5' ,command=self.filereport)
+        self.file_menu.add_command(label="Create a report file", accelerator='Alt+F5' ,command=self.filereport)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.edit_menu = Menu(self.menu, tearoff=0)
