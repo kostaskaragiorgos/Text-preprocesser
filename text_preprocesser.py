@@ -42,7 +42,7 @@ class TextPreprocesser():
         self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.addf)
         self.file_menu.add_command(label="Close a file",
                                    accelerator='Ctrl+F5', state="disable", command=self.closef)
-        self.file_menu.add_command(label="Create a file report", command=self.filereport)
+        self.file_menu.add_command(label="Create a file report", accelerator='Alt+F5' ,command=self.filereport)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.edit_menu = Menu(self.menu, tearoff=0)
@@ -70,6 +70,7 @@ class TextPreprocesser():
         self.master.bind('<Control-s>', lambda event: showstopwordlan())
         self.master.bind('<Control-o>', lambda event: self.addf())
         self.master.bind('<Control-F5>', lambda event: self.closef())
+        self.master.bind('<Alt-F5>', lambda event: self.filereport())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
