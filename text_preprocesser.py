@@ -94,6 +94,9 @@ class TextPreprocesser():
         self.wordstolower.pack()
 
     def filereport(self):
+        """
+        creates a .txt file report of the inserted .txt file
+        """
         if self.filename == "":
             msg.showerror("ERROR", "NO .TXT FILE.\nINSERT A .TXT FILE TO CREATE A REPORT")
         else:
