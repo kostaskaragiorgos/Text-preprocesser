@@ -102,7 +102,7 @@ class TextPreprocesser():
             msg.showerror("ERROR", "NO .TXT FILE.\nINSERT A .TXT FILE TO CREATE A REPORT")
         else:
             report = open("report.txt", 'w')
-            report.write(str(self.word_counter))
+            report.write("The total number of words of the file are:" + str(self.word_counter))
             report.close()
 
 
